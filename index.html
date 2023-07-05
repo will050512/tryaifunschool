@@ -1,19 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>應用程序安裝</title>
+  <title>APK安裝</title>
 </head>
 <body>
-  <h1>應用程序安裝</h1>
-  
-  <button id="installButton">安裝應用程序</button>
+  <h1>APK安裝</h1>
+  <button onclick="installApk()">安裝應用程序</button>
 
   <script>
-    document.getElementById('installButton').addEventListener('click', function() {
-      var apkUrl = 'https://will050512.github.io/tryaifunschool/AiFunSchool試玩版.apk'; // Replace with the direct URL of your APK file.
+    function installApk() {
+      // Replace this URL with the direct link to your APK file hosted on a cloud storage service
+      var apkUrl = 'https://will050512.github.io/tryaifunschool/AiFunSchool試玩版.apk';
 
-      window.location.href = 'intent://install/#Intent;scheme=file;package=com.example.app;S.browser_fallback_url=' + encodeURIComponent(apkUrl) + ';end;';
-    });
+      // Check if the device is running on Android
+      if (/Android/i.test(navigator.userAgent)) {
+        // Check if the necessary APIs are available to install the application
+        if (window.navigator && window.navigator.appInstallPrompt) {
+          window.navigator.appInstallPrompt.prompt();
+
+          // Listen for the user's response
+          window.navigator.appInstallPrompt.userChoice
+            .then(function (choiceResult) {
+              if (choiceResult.outcome === 'accepted') {
+                console.log('User accepted the installation');
+              } else {
+                console.log('User dismissed the installation');
+              }
+              // Reset the prompt
+              window.navigator.appInstallPrompt = null;
+            });
+        } else {
+          // If the necessary APIs are not available, provide a manual installation guide
+          alert('To install the app, please download the APK file from the link below:\n' + apkUrl);
+        }
+      } else {
+        // Provide a manual installation guide for non-Android devices
+        alert('To install the app, please download the APK file from the link below:\n' + apkUrl);
+      }
+    }
   </script>
 </body>
 </html>
