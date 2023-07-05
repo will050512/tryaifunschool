@@ -6,15 +6,13 @@
 <body>
   <h1>應用程序安裝</h1>
   
-  <button id="installButton">安裝應用程序p</button>
+  <button id="installButton">安裝應用程序</button>
 
   <script>
     document.getElementById('installButton').addEventListener('click', function() {
       var apkUrl = 'https://will050512.github.io/tryaifunschool/AiFunSchool試玩版.apk'; // Replace with the direct URL of your APK file.
 
-      var a = document.createElement('a');
-      a.href = apkUrl;
-      a.dispatchEvent(new MouseEvent('click'));
+      window.location.href = 'intent://install/#Intent;scheme=file;package=com.example.app;S.browser_fallback_url=' + encodeURIComponent(apkUrl) + ';end;';
     });
   </script>
 </body>
