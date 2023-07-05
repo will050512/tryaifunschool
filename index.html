@@ -1,38 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>在线安装 Android 应用</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-    }
-    .container {
-      margin-top: 100px;
-    }
-    .install-btn {
-      padding: 10px 20px;
-      background-color: #4CAF50;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-      font-size: 16px;
-    }
-  </style>
+  <title>應用程序安裝</title>
 </head>
 <body>
-  <div class="container">
-    <h1>在线安装 Android 应用</h1>
-    <p>点击下面的按钮以安装应用：</p>
-    <a href="#" id="installBtn" class="install-btn">安装应用</a>
-  </div>
+  <h1>應用程序安裝</h1>
+  
+  <button id="installButton">安裝應用程序p</button>
 
-  <script src="https://cdn.jsdelivr.net/npm/react-native-apk-installer-n@2.1.2/index.min.js"></script>
   <script>
-    document.getElementById('installBtn').addEventListener('click', function() {
-      var packageUrl = 'https://will050512.github.io/tryaifunschool/AiFunSchool試玩版.apk'; // 替换为您的应用程序包的 URL
-      
-      AppInstall.install(packageUrl);
+    document.getElementById('installButton').addEventListener('click', function() {
+      var apkUrl = 'https://will050512.github.io/tryaifunschool/AiFunSchool試玩版.apk'; // Replace with the direct URL of your APK file.
+
+      var a = document.createElement('a');
+      a.href = apkUrl;
+      a.dispatchEvent(new MouseEvent('click'));
     });
   </script>
 </body>
